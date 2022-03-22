@@ -10,19 +10,23 @@
 <body>
     <main class="container">
         <h1>Gerador de Imagens</h1>
-        <button id="buttonImgs">Random</button>
-        <button id="buttonFavorites">Favoritos</button>
-
+        <main class="container-buttons">
+            <button class="button" id="buttonImgs">Random</button>
+            <button class="button" id="buttonFavorites">Favoritos</button>
+        </main>
+        
         <main id="containerPaiImg" class="fundoRetrato">
             <main id="linkImg">
                 <section class="dadosImg">
                     <a id="directLink" target="_blank">
                         <img src="img/direct.svg" alt="Visitar imagem no unsplash">
                     </a>
-                    <img id="heart" src="img/heart.svg" alt="Visitar imagem no unsplash">
+                    <img id="heart" src="img/heart.svg" alt="Favoritar">
                 </section>
             </main>
         </main>
+
+        <button id="buttonNext" class="button">Pagina Grupo</button>
     </main>
     <script src="js/script.js"></script>
 </body>

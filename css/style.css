@@ -20,9 +20,45 @@ body {
     color: #2E2F35;
 }
 
-#buttonImgs {
+.container-buttons {
+    display: flex;
+}
+
+.button {
+    text-shadow: inset 0px 1px 0px #c4c4c4;
+    color: #ffffff;
+    
+    font-size: 15px;
+    font-family: Arial;
+    font-weight: bold;
+
+    width: 140px;
+    height: 45px;
     cursor: pointer;
-    margin: 10px 25px 0px 25px;
+ 
+    border-width: 1px;
+    border-radius: 10px;
+    margin: 20px 20px 0px 20px;
+}
+
+#buttonImgs {
+    background: linear-gradient(#4a90e2, #2d324f);
+    box-shadow: inset 1px 1px 13px 0px #2d324f;
+    border-color: rgba(46, 47, 53, 1);
+}
+  
+#buttonImgs:hover {
+    background: linear-gradient(rgba(45, 50, 79, 1), rgba(74, 144, 226, 1));
+}
+ 
+#buttonFavorites {
+    background:linear-gradient(#c123de, rgba(57, 48, 74, 1));
+    box-shadow:inset 0px 1px 0px 0px rgba(57, 35, 99, 1);
+    border-color:rgba(87, 53, 150, 1);
+}
+
+#buttonFavorites:hover {
+    background: linear-gradient(rgba(57, 48, 74, 1), #c123de);
 }
 
 #containerPaiImg {
@@ -64,4 +100,18 @@ body {
     height: 25px;
     width: 25px;
     margin-right: 10px;
+}
+
+#buttonNext {
+    background:linear-gradient(#89c403, rgba(49, 69, 1, 1));
+    box-shadow:inset 0px 1px 0px 0px rgba(55, 69, 22, 1); 
+    border-color:rgba(103, 145, 3, 1);
+    position: absolute;
+    align-self: flex-end;
+    right: 25px;
+    bottom: 25px;
+}
+
+#buttonNext:hover {
+    background: linear-gradient(rgba(49, 69, 1, 1), #89c403);
 }
