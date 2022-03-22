@@ -11,7 +11,7 @@ document.querySelector("#buttonImgs").addEventListener("click", () => imgRandom(
 document.querySelector("#buttonFavorites").addEventListener("click", () => imgFavorita());
 
 imgHeart.addEventListener("click", () => {
-    const lista = [linkImg.style.background, linkDireto.href]
+    const lista = [linkImg.style.background, linkDireto.href];
     const indice = favorites.indexOf(lista);
 
     if (indice == -1) {
@@ -35,7 +35,7 @@ function imgRandom() {
 
 function atualizaImg() {
     let apiKey = "kaokzJCbcYsVY9jm5V2tjN4nJ39YEP4rCmn8uZiWqxQ";
-    imgHeart.src = "../img/heart.svg"
+    imgHeart.src = "../img/heart.svg";
 
     fetch("https://api.unsplash.com/photos/random/?client_id=" + apiKey)
     .then((response) => response.json())
