@@ -25,13 +25,23 @@ body {
     margin: 10px 25px 0px 25px;
 }
 
-.fundoRetrato {
-    background-color: #A3B4A2;
+#containerPaiImg {
     width: 375px;
     height: 450px;
-    border: 15px solid #2E2F35;
     margin: 35px 15px;
+    transition: ease-in-out 1s;
+}
+
+.fundoRetrato {
+    background-color: #A3B4A2;
+    border: 15px solid #2E2F35;
     transform: rotate(-3deg);
+}
+
+.fundoRetratoInvertido {
+    background-color: #50858B;
+    border: 15px solid #39304A;
+    transform: rotate(3deg);
 }
 
 #linkImg {
