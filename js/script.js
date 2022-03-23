@@ -5,8 +5,6 @@ let linkImg = document.querySelector("#linkImg");
 let containePai = document.querySelector("#containerPaiImg");
 let cont = 0;
 
-// atualizaImagem();
-
 document.querySelector("#buttonImgs").addEventListener("click", () => imgRandom());
 document.querySelector("#buttonFavorites").addEventListener("click", () => imgFavorita());
 
@@ -15,10 +13,12 @@ imgHeart.addEventListener("click", () => {
     const indice = favorites.indexOf(lista);
 
     if (indice == -1) {
-        imgHeart.src = "../img/heart_red.svg"
-        favorites.push(lista);
+        if (linkDireto != '') {
+            imgHeart.src = "../img/heart_red.png"
+            favorites.push(lista);
+        }
     } else {
-        imgHeart.src = "../img/heart.svg"
+        imgHeart.src = "../img/heart.png"
         favorites.splice(indice, 1);
     }
     localStorage.favorites = JSON.stringify(favorites);
@@ -35,7 +35,7 @@ function imgRandom() {
 
 function atualizaImg() {
     let apiKey = "kaokzJCbcYsVY9jm5V2tjN4nJ39YEP4rCmn8uZiWqxQ";
-    imgHeart.src = "../img/heart.svg";
+    imgHeart.src = "../img/heart.png";
 
     fetch("https://api.unsplash.com/photos/random/?client_id=" + apiKey)
     .then((response) => response.json())
@@ -54,11 +54,11 @@ function imgFavorita() {
         classe.add("fundoRetratoInvertido");
     }
 
-    if (localStorage > 0) {
+    if (localStorage.favorites.length > 0) {
         mostrarImagem(favorites[cont][0], favorites[cont][1]);
     } else {
         mostrarImagem("#50858B", "");
-        imgHeart.src = "../img/heart.svg";
+        imgHeart.src = "../img/heart.png";
     }
 
     cont++;

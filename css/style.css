@@ -86,7 +86,6 @@ body {
 }
 
 .dadosImg {
-    /* display: none; */
     margin: 15px 10px 0px 0px;
     float: right;
 }
@@ -102,16 +101,67 @@ body {
     margin-right: 10px;
 }
 
-#buttonNext {
+.buttonNext {
     background:linear-gradient(#89c403, rgba(49, 69, 1, 1));
     box-shadow:inset 0px 1px 0px 0px rgba(55, 69, 22, 1); 
-    border-color:rgba(103, 145, 3, 1);
+    border-color:#679103;
+
     position: absolute;
     align-self: flex-end;
+    text-decoration: none;
     right: 25px;
     bottom: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#buttonNext:hover {
+.buttonNext:hover {
     background: linear-gradient(rgba(49, 69, 1, 1), #89c403);
+}
+
+.container-sobre {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.sobre-img {
+    background: url("../img/minha_foto.jpg");
+    width: 300px;
+    height: 300px;
+    /* border: 15px solid #2E2F35; */
+    border: 15px solid #39304A;
+    margin: 25px 80px;
+    transform: rotate(-7deg);
+    transition: 1s;
+}
+
+.sobre-img:hover {
+    filter: grayscale(100%);
+}
+
+.container-sobre-dados {
+    height: 200px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.container-sobre-dados h1 {
+    font-size: 3em;
+    color: #4D4A41
+}
+
+.container-sobre-dados h2 {
+    font-size: 2.15em;
+    color: #39304A;
+}
+
+.container-sobre-dados p {
+    font-size: 1.5em;
+    color: #2E2F35;
 }
