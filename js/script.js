@@ -9,17 +9,15 @@ document.querySelector("#buttonImgs").addEventListener("click", () => imgRandom(
 document.querySelector("#buttonFavorites").addEventListener("click", () => imgFavorita());
 
 imgHeart.addEventListener("click", () => {
-    const lista = [linkImg.style.background, linkDireto.href];
-    const indice = favorites.indexOf(lista);
+    let listaLinks = [linkImg.style.background, linkDireto.href];
+    const existente = confirmarSeEstaSalvo(listaLinks);
 
-    if (indice == -1) {
-        if (linkDireto != '') {
-            imgHeart.src = "../img/heart_red.png"
-            favorites.push(lista);
-        }
+    if (!existente && linkDireto != '') {
+        imgHeart.src = "./img/heart_red.svg";
+        favorites.push(listaLinks);
     } else {
-        imgHeart.src = "../img/heart.png"
-        favorites.splice(indice, 1);
+        imgHeart.src = "./img/heart.svg";
+        favorites.pop();
     }
     localStorage.favorites = JSON.stringify(favorites);
 });
@@ -35,15 +33,15 @@ function imgRandom() {
 
 function atualizaImg() {
     let apiKey = "kaokzJCbcYsVY9jm5V2tjN4nJ39YEP4rCmn8uZiWqxQ";
-    imgHeart.src = "../img/heart.png";
+    imgHeart.src = "./img/heart.svg";
 
     fetch("https://api.unsplash.com/photos/random/?client_id=" + apiKey)
     .then((response) => response.json())
     .then((dados) => {
         let link = "url(" + dados.urls.raw + "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress) center no-repeat";
-        mostrarImagem(link, dados.links.html);
+        mudarBackground(link, dados.links.html);
     })
-    .catch((error) => alert("Bateu o limite de imagens por minutos: " + error));
+    .catch((error) => alert("Bateu o limite de imagens por minutos: "));
 }
 
 function imgFavorita() {
@@ -54,11 +52,11 @@ function imgFavorita() {
         classe.add("fundoRetratoInvertido");
     }
 
-    if (localStorage.favorites.length > 0) {
-        mostrarImagem(favorites[cont][0], favorites[cont][1]);
+    if (localStorage.length > 0 && favorites.length > 0) {
+        mudarBackground(favorites[cont][0], favorites[cont][1]);
     } else {
-        mostrarImagem("#50858B", "");
-        imgHeart.src = "../img/heart.png";
+        mudarBackground("#50858B", "");
+        imgHeart.src = "./img/heart.svg";
     }
 
     cont++;
@@ -67,7 +65,16 @@ function imgFavorita() {
     }
 }
 
-function mostrarImagem(planoDeFundo, linkUnsplash) {
+function mudarBackground(planoDeFundo, linkUnsplash) {
     linkImg.style.background = planoDeFundo;
     linkDireto.href = linkUnsplash;
+}
+
+function confirmarSeEstaSalvo(array) {
+    for (let cont = 0; cont < favorites.length; cont++) {
+        if (favorites[cont][1] == array[1]) {
+            return true;
+        }
+    }
+    return false;
 }

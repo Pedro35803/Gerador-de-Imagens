@@ -121,25 +121,23 @@ body {
     background: linear-gradient(rgba(49, 69, 1, 1), #89c403);
 }
 
-.container-sobre {
+#container-sobre {
     height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
-.sobre-img {
-    background: url("../img/minha_foto.jpg");
-    width: 300px;
-    height: 300px;
-    /* border: 15px solid #2E2F35; */
+#sobre-img {
+    min-width: 300px;
+    min-height: 300px;
     border: 15px solid #39304A;
     margin: 25px 80px;
     transform: rotate(-7deg);
     transition: 1s;
 }
 
-.sobre-img:hover {
+#sobre-img:hover {
     filter: grayscale(100%);
 }
 
