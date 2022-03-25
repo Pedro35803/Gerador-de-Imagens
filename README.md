@@ -16,6 +16,7 @@
 ---
 # Sumário
 * [Sobre](#Sobre)
+* [Como usar](#comoUsar)
 * [Linguagens](#linguagens)
 * [Frameworks](#frameworks)
 * [Licença](#Licença)
@@ -23,20 +24,35 @@
 ---
 <a id="Sobre"></a>
 # Sobre
-<p>
- Site criado para a avaliação final da disciplina de Linguagem de Script para a Web, ao qual tinha como parametros a criação de uma pagina que tenha duas funcionalidades do JS que interagise com a interface, o uso da API do unsplash e os favoritos funcionando com o localStorage, além disso deveria ter uma interação com um script Node.js usando express, nesse caso foi a API que retorna apenas o nome, descrição e foto do criador do site
-</p>
-<p>
-   Com esse site conseguir bater todas as 3 metas impostas na avaliação final, mas ainda desejo dar continuidade ao repositorio no futuro, fazendo coisas como aumentar a quantidade de funcionalidades, melhorar a interface e esconder a chave da API, apenas por motivos de segurança.
-</p>
-<p>
-  Para acessar a pagina diretamente pelo navegador clique <a href="https://pedro35803.github.io/Gerador-de-Imagens" target="_blank">aqui</a>.
-</p>
+ Site criado para a **avaliação final** da disciplina de Linguagem de Script para a Web, ao qual tinha como parametros a criação de uma pagina que tenha duas funcionalidades do JS que interagise com a interface, **o uso da API do unsplash e os favoritos funcionando com o localStorage**, além disso deveria ter uma interação com um script Node.js criado pelo grupo usando express, **nesse caso foi a API que retorna apenas o nome, descrição e o caminho para a foto do criador do site**.
+ 
+   Com esse site **conseguir bater todas as 3 metas impostas** na avaliação final, mas ainda desejo dar **continuidade ao repositorio no futuro**, trabalhando em partes como aumentar a quantidade de funcionalidades, melhorar a interface e esconder a chave da API, apenas por motivos de segurança.
+
+---
+<a id="comoUsar"></a>
+# Como usar
+Existe **duas formas** de usar o projeto, se você deseja apenas usar a API, só precissará entrar na **[pagina](https://pedro35803.github.io/Gerador-de-Imagens/)**, mas se vc deseja acessar a pagina about, vendo o funcionamento completo, como idealmente planejado, vc terá que usar o Node.JS
+Para isso siga os seguintes **pré requisitos:**
+  - É **necessário** possuir o **[Node.js](https://nodejs.org/en/)** instalado na máquina
+  - Também, é **preciso** ter um gerenciador de pacotes seja o **[NPM](https://www.npmjs.com/)**.
+
+1. Faça um clone :
+
+```sh
+  git clone https://github.com/Pedro35803/Gerador-de-Imagens.git
+```
+
+2. Inicializa o app.js:
+
+```sh
+  cd Gerador-de-Imagens
+  node js/app.js
+```
 
 ---
 <a id="linguagens"></a>
 # Linguagens
-Esta atividade foi realizada apenas com as linguagens básicas do desenvolvimento web:
+Esta atividade foi realizada apenas com as **linguagens básicas** do desenvolvimento web:
 
 * [HTML5](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 * [CSS3](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
@@ -45,7 +61,7 @@ Esta atividade foi realizada apenas com as linguagens básicas do desenvolviment
 ---
 <a id="Licença"></a>
 # frameworks
-Como uma das demandas da avaliação era usar o express, utilizei o mesmo como sujerido.
+Como uma das demandas da avaliação era usar o **express**, utilizei o mesmo como sujerido.
 
 * [Express](https://expressjs.com/pt-br/)
 
@@ -53,7 +69,7 @@ Como uma das demandas da avaliação era usar o express, utilizei o mesmo como s
 <a id="Licença"></a>
 # Licença
 
-Esse Repositorio está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/Pedro35803/Gerador-de-Imagens/blob/main/LICENSE) para mais detalhes.
+Esse Repositorio está sob a **licença MIT**. Veja o arquivo [LICENSE](https://github.com/Pedro35803/Gerador-de-Imagens/blob/main/LICENSE) para mais detalhes.
 
 ---
 ### <h3 align="center"> by [Pedro35803 👨‍💻](https://github.com/Pedro35803) </h3>
