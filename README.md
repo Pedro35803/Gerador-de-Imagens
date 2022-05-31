@@ -1,14 +1,12 @@
-# <h1 align="center">Gerador de Imagens</h1>
+# <h1 align="center">Buscador de Imagens</h1>
 
 <div align="center">
-  <a href="https://github.com/Pedro35803/Gerador-de-Imagens">
+  <a href="https://github.com/Pedro35803/Buscador-de-Imagens">
     <img src="https://img.shields.io/badge/version-1.0.0-50858B.svg?cacheSeconds=2592000" alt="Version 1.0.0"/>
     <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&color=CDC6AE&labelColor=39304A" alt="PRs welcome!"/>
   </a>
   
-  <a href="https://github.com/Pedro35803/Gerador-de-Imagens/blob/main/LICENSE">
-<!--     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-c123de.svg" target="_blank"/> -->
-<!--     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-4a90e2.svg" target="_blank"/> -->
+  <a href="https://github.com/Pedro35803/Buscador-de-Imagens/blob/main/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-2E2F35.svg" target="_blank"/>
   </a>
 </div>
@@ -31,7 +29,7 @@
 ---
 <a id="comoUsar"></a>
 # Como usar
-Existe **duas formas** de usar o projeto, se você deseja apenas usar a API, só precissará entrar na **[pagina](https://pedro35803.github.io/Gerador-de-Imagens/)**, mas se vc deseja acessar a pagina about, vendo o funcionamento completo, como idealmente planejado, vc terá que usar o Node.JS
+Existe **duas formas** de usar o projeto, se você deseja apenas usar a API, só precissará entrar na **[pagina](https://pedro35803.github.io/Buscador-de-Imagens/)**, mas se vc deseja acessar a pagina about, vendo o funcionamento completo, como idealmente planejado, vc terá que usar o Node.JS
 Para isso siga os seguintes **pré requisitos:**
   - É **necessário** possuir o **[Node.js](https://nodejs.org/en/)** instalado na máquina
   - Também, é **preciso** ter um gerenciador de pacotes seja o **[NPM](https://www.npmjs.com/)**.
@@ -39,13 +37,13 @@ Para isso siga os seguintes **pré requisitos:**
 1. Faça um clone :
 
 ```sh
-  git clone https://github.com/Pedro35803/Gerador-de-Imagens.git
+  git clone https://github.com/Pedro35803/Buscador-de-Imagens.git
 ```
 
 2. Inicializa o app.js:
 
 ```sh
-  cd Gerador-de-Imagens
+  cd Buscador-de-Imagens
   node js/app.js
 ```
 
@@ -69,7 +67,7 @@ Como uma das demandas da avaliação era usar o **express**, utilizei o mesmo co
 <a id="Licença"></a>
 # Licença
 
-Esse Repositorio está sob a **licença MIT**. Veja o arquivo [LICENSE](https://github.com/Pedro35803/Gerador-de-Imagens/blob/main/LICENSE) para mais detalhes.
+Esse Repositorio está sob a **licença MIT**. Veja o arquivo [LICENSE](https://github.com/Pedro35803/Buscador-de-Imagens/blob/main/LICENSE) para mais detalhes.
 
 ---
 ### <h3 align="center"> by [Pedro35803 👨‍💻](https://github.com/Pedro35803) </h3>
