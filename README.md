@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://github.com/Pedro35803/Buscador-de-Imagens">
-    <img src="https://img.shields.io/badge/version-1.0.0-50858B.svg?cacheSeconds=2592000" alt="Version 1.0.0"/>
+    <img src="https://img.shields.io/badge/version-1.1.0-50858B.svg?cacheSeconds=2592000" alt="Version 1.1.0"/>
     <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&color=CDC6AE&labelColor=39304A" alt="PRs welcome!"/>
   </a>
   
