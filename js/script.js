@@ -24,9 +24,9 @@ imgHeart.addEventListener("click", () => {
 
 function imgRandom() {
     let classe = containePai.classList;
-    if (classe.contains("fundoRetratoInvertido")) {
-        classe.remove("fundoRetratoInvertido");
-        classe.add("fundoRetrato");
+    if (classe.contains("portrait-background-inverted")) {
+        classe.remove("portrait-background-inverted");
+        classe.add("portrait-background");
     }
     atualizaImg();
 }
@@ -47,9 +47,9 @@ function atualizaImg() {
 function imgFavorita() {
     let classe = containePai.classList;
     
-    if (classe.contains("fundoRetrato")) {
-        classe.remove("fundoRetrato");
-        classe.add("fundoRetratoInvertido");
+    if (classe.contains("portrait-background")) {
+        classe.remove("portrait-background");
+        classe.add("portrait-background-inverted");
     }
 
     if (localStorage.length > 0 && favorites.length > 0) {

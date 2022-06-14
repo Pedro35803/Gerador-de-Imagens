@@ -9,15 +9,15 @@
 </head>
 <body>
     <main class="container">
-        <h1>Gerador de Imagens</h1>
-        <main class="container-buttons">
-            <button class="button" id="buttonImgs">Random</button>
-            <button class="button" id="buttonFavorites">Favoritos</button>
+        <h1>Buscador de Imagens</h1>
+        <main class="flex">
+            <button class="button button-blue" id="buttonImgs">Random</button>
+            <button class="button button-pupple" id="buttonFavorites">Favoritos</button>
         </main>
         
-        <main id="containerPaiImg" class="fundoRetrato">
-            <main id="linkImg">
-                <section class="dadosImg">
+        <main class="container-main portrait-background" id="containerPaiImg">
+            <main class="link-img" id="linkImg">
+                <section class="container-portrait">
                     <a id="directLink" target="_blank">
                         <img src="img/direct.svg" alt="Visitar imagem no unsplash">
                     </a>
@@ -26,7 +26,7 @@
             </main>
         </main>
 
-        <a class="button buttonNext" href="about.html">Pagina Sobre</a>
+        <a class="button button-remote button-green">Remoto</a>
     </main>
     <script src="js/script.js"></script>
 </body>
