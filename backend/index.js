@@ -1,17 +1,13 @@
+const routes = require('./src/routers');
 const express = require('express');
 const cors = require('cors');
-const port = 3000;
-const app = express();
+require('dotenv').config()
 
-const grupo = {
-  criador : "Pedro",
-  mensagem : "Não está ainda como indealizo, essa é apenas uma mensagem para testar a API",
-}
+const app = express();
+const port = 3000;
 
 app.use(cors());
-app.get('/', (req, res) => {
-	res.send(grupo);
-});
+app.use(routes);
 
 app.listen(port, () => {
   console.log(`Executando em http://localhost:${port}`)
