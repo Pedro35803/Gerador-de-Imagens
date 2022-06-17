@@ -4,11 +4,10 @@ const cors = require('cors');
 require('dotenv').config()
 
 const app = express();
-const port = 3000;
 
 app.use(cors());
 app.use(routes);
 
-app.listen(port, () => {
-  console.log(`Executando em http://localhost:${port}`)
-})
+app.listen(process.env.PORT || 3580, () => {
+  console.log("Executando a API");
+});

@@ -9,7 +9,6 @@ const Favoritos = sequelize.define("favoritos", {
 });
 
 // Cria a tabela se ela não existir
-
 const init = async () => {
     await Favoritos.sync();
 }
