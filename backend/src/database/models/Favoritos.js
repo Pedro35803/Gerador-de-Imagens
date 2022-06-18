@@ -9,7 +9,7 @@ const Favoritos = sequelize.define("favoritos", {
         autoIncrement: true,
         allowNull: false
     },
-    email: {
+    user: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -18,6 +18,8 @@ const Favoritos = sequelize.define("favoritos", {
         allowNull: false
     }
 });
+
+// Cria a tabela se ela não existir
 
 const init = async () => {
     await Favoritos.sync();

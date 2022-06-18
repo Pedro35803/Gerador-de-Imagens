@@ -11,4 +11,8 @@ const sequelize = new Sequelize(hostDoBD, {
     },
 });
 
+sequelize.authenticate()
+    .then(() => console.log("Conexão com o BD feita com sucesso"))
+    .catch((error) => console.log("Ocorreu algum error ao se conectar com o BD: " + error));
+
 module.exports = sequelize;
