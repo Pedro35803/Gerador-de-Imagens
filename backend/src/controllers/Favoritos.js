@@ -1,16 +1,18 @@
+const { QueryTypes } = require('sequelize');
+const sequelize = require('../database/sequelize');
 const Favoritos = require("../database/models/Favoritos");
 
-
 module.exports = {
-    all(req, res, next) {
-        Favoritos.findAll()
+    async getFavoritos(req, res, next) {
+        await sequelize.query("Select * from favoritos", { type:  QueryTypes })
             .then((resultado) => res.json(resultado))
             .catch(next);
     },
-    create(req, res, next) {
-        const { id, user, linkImagem } = req.body;
 
-        Favoritos.create(id, user, linkImagem)
+    async create(req, res, next) {
+        const { user, linkImagem, linkHtml } = req.body;
+        
+        await Favoritos.create({user, linkImagem, linkHtml})
             .then((resultado) => {
                 res.status(201).json(resultado);
             })

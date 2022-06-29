@@ -15,11 +15,15 @@ const Favoritos = sequelize.define("favoritos", {
     },
     linkImagem: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
+    },
+    linkHtml: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
     }
 });
-
-// Cria a tabela se ela não existir
 
 const init = async () => {
     await Favoritos.sync();
