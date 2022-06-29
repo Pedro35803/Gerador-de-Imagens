@@ -15,6 +15,11 @@ body {
     display: flex;
 }
 
+.flex-centralizar {
+    justify-content: center;
+    align-items: center;
+}
+
 .container {
     height: 100%;
     display: flex;
@@ -64,4 +69,26 @@ body {
     height: 25px;
     width: 25px;
     margin-right: 10px;
+}
+
+.loading {
+    height: 100px;
+    width: 100px;
+
+    border-radius: 50%;
+    border: 10px solid #e5e5e5;
+    border-top-color: #51d4db;
+
+    margin: auto;
+    animation: is-rotating 1s infinite;
+}
+
+.disabled {
+    display: none;
+}
+
+@keyframes is-rotating {
+    to {
+        transform: rotate(1turn);
+    }
 }
