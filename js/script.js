@@ -19,34 +19,29 @@ imgHeart.addEventListener("click", () => {
         imgHeart.src = "./img/heart.svg";
         favorites.pop();
     }
-
     localStorage.favorites = JSON.stringify(favorites);
 });
 
 function imgRandom() {
     let classe = containePai.classList;
-
     if (classe.contains("portrait-background-inverted")) {
         classe.remove("portrait-background-inverted");
         classe.add("portrait-background");
     }
-
-    // loading();
     atualizaImg();
-    // removerLoading();
 }
 
-async function atualizaImg() {
-    let apiKey = "kaokzJCbcYsVY9jm5V2tjN4nJ39YEP4rCmn8uZiWqxQ"; // temporario
+function atualizaImg() {
+    let apiKey = "kaokzJCbcYsVY9jm5V2tjN4nJ39YEP4rCmn8uZiWqxQ";
     imgHeart.src = "./img/heart.svg";
 
-    await fetch("https://api.unsplash.com/photos/random/?client_id=" + apiKey)
-        .then((response) => response.json())
-        .then((dados) => {
-            let link = "url(" + dados.urls.raw + "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress) center no-repeat";
-            mudarBackground(link, dados.links.html);
-        })
-        .catch(() => alert("Bateu o limite de imagens por minutos: "));
+    fetch("https://api.unsplash.com/photos/random/?client_id=" + apiKey)
+    .then((response) => response.json())
+    .then((dados) => {
+        let link = "url(" + dados.urls.raw + "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress) center no-repeat";
+        mudarBackground(link, dados.links.html);
+    })
+    .catch((error) => alert("Bateu o limite de imagens por minutos: "));
 }
 
 function imgFavorita() {
@@ -82,26 +77,4 @@ function confirmarSeEstaSalvo(array) {
         }
     }
     return false;
-}
-
-function loading() {
-    const containerPai = document.querySelector("#linkImg");
-    const containerIrmao = document.querySelector("#linkImg .container-portrait");
-    containerIrmao.classList.add("disabled");
-
-    const containerLoading = document.createElement("div");
-    containerLoading.classList.add("loading");
-
-    containerPai.classList.add("flex", "flex-centralizar");
-    containerPai.appendChild(containerLoading);
-}
-
-function removerLoading() {
-    const containerPai = document.querySelector("#linkImg");
-    const containerLoading = document.querySelector(".loading");
-    const containerIrmao = document.querySelector("#linkImg .container-portrait");
-
-    containerLoading.remove();
-    containerIrmao.classList.remove("disabled");
-    containerPai.classList.remove("flex", "flex-centralizar");
 }
