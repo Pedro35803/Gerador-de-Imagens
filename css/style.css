@@ -45,6 +45,12 @@ body {
     transform: rotate(3deg);
 }
 
+.loading {
+    background-image: url('../img/loading_02.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .link-img {
     height: 100%;
     width: 100%;

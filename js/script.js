@@ -19,29 +19,34 @@ imgHeart.addEventListener("click", () => {
         imgHeart.src = "./img/heart.svg";
         favorites.pop();
     }
+
     localStorage.favorites = JSON.stringify(favorites);
 });
 
 function imgRandom() {
     let classe = containePai.classList;
+
     if (classe.contains("portrait-background-inverted")) {
         classe.remove("portrait-background-inverted");
         classe.add("portrait-background");
     }
+
     atualizaImg();
 }
 
 function atualizaImg() {
     let apiKey = "kaokzJCbcYsVY9jm5V2tjN4nJ39YEP4rCmn8uZiWqxQ";
     imgHeart.src = "./img/heart.svg";
+    containePai.classList.toggle("loading");
 
     fetch("https://api.unsplash.com/photos/random/?client_id=" + apiKey)
-    .then((response) => response.json())
-    .then((dados) => {
-        let link = "url(" + dados.urls.raw + "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress) center no-repeat";
-        mudarBackground(link, dados.links.html);
-    })
-    .catch((error) => alert("Bateu o limite de imagens por minutos: "));
+        .then((response) => response.json())
+        .then((dados) => {
+            let link = "url(" + dados.urls.raw + "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress) center no-repeat";
+            mudarBackground(link, dados.links.html);
+        })
+        .catch((error) => alert("Bateu o limite de imagens por minutos: "));
+
 }
 
 function imgFavorita() {
