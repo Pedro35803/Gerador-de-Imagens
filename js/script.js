@@ -1,8 +1,9 @@
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-let linkDireto = document.querySelector("#directLink");
-let imgHeart = document.querySelector("#heart");
-let linkImg = document.querySelector("#linkImg");
 let containePai = document.querySelector("#containerPaiImg");
+let linkDireto = document.querySelector("#directLink");
+let linkImg = document.querySelector("#linkImg");
+let imgHeart = document.querySelector("#heart");
+let listaFotos = [];
 let cont = 0;
 
 document.querySelector("#buttonImgs").addEventListener("click", () => imgRandom());

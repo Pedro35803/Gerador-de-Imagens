@@ -9,21 +9,32 @@
 </head>
 <body>
     <main class="container">
-        <h1>Buscador de Imagens</h1>
+        <h1 class="title">Buscador de Imagens</h1>
+
         <main class="flex">
             <button class="button button-blue" id="buttonImgs">Random</button>
             <button class="button button-pupple" id="buttonFavorites">Favoritos</button>
         </main>
-        
-        <main class="container-main portrait-background" id="containerPaiImg">
-            <main class="link-img" id="linkImg">
-                <section class="container-portrait">
-                    <a id="directLink" target="_blank">
-                        <img src="img/direct.svg" alt="Visitar imagem no unsplash">
-                    </a>
-                    <img id="heart" src="img/heart.svg" alt="Favoritar">
-                </section>
+
+        <main class="container--centralized">
+            <button class="button button-circle button-blue">
+                <div class="seta seta-esquerda"></div>
+            </button>
+            
+            <main class="container-main portrait-background" id="containerPaiImg">
+                <main class="link-img" id="linkImg">
+                    <section class="container-portrait">
+                        <a id="directLink" target="_blank">
+                            <img src="img/direct.svg" alt="Visitar imagem no unsplash">
+                        </a>
+                        <img id="heart" src="img/heart.svg" alt="Favoritar">
+                    </section>
+                </main>
             </main>
+            
+            <button class="button button-circle button-pupple">
+                <div class="seta seta-direita"></div>
+            </button>
         </main>
 
         <a class="button button-remote button-green">Remoto</a>
