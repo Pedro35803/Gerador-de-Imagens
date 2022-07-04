@@ -60,17 +60,24 @@ const heartEvent = () => {
 }
 
 const atualizaImg = () => {
-    let apiKey = "kaokzJCbcYsVY9jm5V2tjN4nJ39YEP4rCmn8uZiWqxQ";
     imgHeart.src = "./img/heart.svg";
     containePai.classList.toggle("loading");
 
-    fetch("https://api.unsplash.com/photos/random/?client_id=" + apiKey)
+    const dados = receberImagemDaApi();
+    const configImg = "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress";
+
+    const link = "url(" + dados.urls.raw + configImg + ") center no-repeat";
+    mudarBackground(link, dados.links.html);
+    
+    listaFotos.push(objetoSalvar(link, dados.links.html));
+}
+
+const receberImagemDaApi = () => {
+    const linkApi = "https://api.unsplash.com/photos/random/?client_id=";
+    const chaveAPI = "kaokzJCbcYsVY9jm5V2tjN4nJ39YEP4rCmn8uZiWqxQ";
+
+    return fetch(linkApi + chaveAPI)
         .then((response) => response.json())
-        .then((dados) => {
-            let link = "url(" + dados.urls.raw + "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress) center no-repeat";
-            mudarBackground(link, dados.links.html);
-            listaFotos.push(objetoSalvar(link, dados.links.html));
-        })
         .catch(() => alert("Bateu o limite de imagens por hora"));
 }
 

@@ -5,8 +5,7 @@
   "main": "backend/index.js",
   "scripts": {
     "dev": "nodemon backend/index.js",
-    "start": "node backend/index.js",
-    "build": "express build --output public"    
+    "start": "node backend/index.js"
   },
   "repository": {
     "type": "git",
