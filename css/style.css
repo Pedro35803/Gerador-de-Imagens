@@ -1,3 +1,5 @@
+@import url(button.css);
+
 * {
     margin: 0;
     padding: 0;
@@ -9,6 +11,10 @@ body {
     background-color: #CDC6AE;
 }
 
+.flex {
+    display: flex;
+}
+
 .container {
     height: 100%;
     display: flex;
@@ -16,107 +22,57 @@ body {
     align-items: center;
 }
 
-.container h1 {
+.title {
     color: #2E2F35;
 }
 
-.container-buttons {
-    display: flex;
-}
-
-.button {
-    text-shadow: inset 0px 1px 0px #c4c4c4;
-    color: #ffffff;
-    
-    font-size: 15px;
-    font-family: Arial;
-    font-weight: bold;
-
-    width: 140px;
-    height: 45px;
-    cursor: pointer;
- 
-    border-width: 1px;
-    border-radius: 10px;
-    margin: 20px 20px 0px 20px;
-}
-
-#buttonImgs {
-    background: linear-gradient(#4a90e2, #2d324f);
-    box-shadow: inset 1px 1px 13px 0px #2d324f;
-    border-color: rgba(46, 47, 53, 1);
-}
-  
-#buttonImgs:hover {
-    background: linear-gradient(rgba(45, 50, 79, 1), rgba(74, 144, 226, 1));
-}
- 
-#buttonFavorites {
-    background:linear-gradient(#c123de, rgba(57, 48, 74, 1));
-    box-shadow:inset 0px 1px 0px 0px rgba(57, 35, 99, 1);
-    border-color:rgba(87, 53, 150, 1);
-}
-
-#buttonFavorites:hover {
-    background: linear-gradient(rgba(57, 48, 74, 1), #c123de);
-}
-
-#containerPaiImg {
+.container-main {
     width: 375px;
     height: 450px;
     margin: 35px 15px;
     transition: ease-in-out 1s;
 }
 
-.fundoRetrato {
+.container--centralized {
+    display: flex;
+    align-items: center;
+}
+
+.portrait-background {
     background-color: #A3B4A2;
     border: 15px solid #2E2F35;
     transform: rotate(-3deg);
 }
 
-.fundoRetratoInvertido {
+.portrait-background-inverted {
     background-color: #50858B;
     border: 15px solid #39304A;
     transform: rotate(3deg);
 }
 
-#linkImg {
+.loading {
+    background-image: url('../img/loading_02.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.link-img {
     height: 100%;
     width: 100%;
 }
 
-.dadosImg {
+.container-portrait {
     margin: 15px 10px 0px 0px;
     float: right;
 }
 
-.dadosImg a {
+.container-portrait a {
     all: unset;
 }
 
-.dadosImg img {
+.container-portrait img {
     cursor: pointer;
     height: 25px;
     width: 25px;
     margin-right: 10px;
-}
-
-.buttonNext {
-    background:linear-gradient(#89c403, rgba(49, 69, 1, 1));
-    box-shadow:inset 0px 1px 0px 0px rgba(55, 69, 22, 1); 
-    border-color:#679103;
-
-    position: absolute;
-    align-self: flex-end;
-    text-decoration: none;
-    right: 25px;
-    bottom: 25px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.buttonNext:hover {
-    background: linear-gradient(rgba(49, 69, 1, 1), #89c403);
 }

@@ -1,80 +1,134 @@
-let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-let linkDireto = document.querySelector("#directLink");
-let imgHeart = document.querySelector("#heart");
-let linkImg = document.querySelector("#linkImg");
 let containePai = document.querySelector("#containerPaiImg");
-let cont = 0;
+let linkDireto = document.querySelector("#directLink");
+let linkImg = document.querySelector("#linkImg");
+let imgHeart = document.querySelector("#heart");
 
-document.querySelector("#buttonImgs").addEventListener("click", () => imgRandom());
+const classeRetratoFavorites = "portrait-background-inverted";
+const classeRetratoRandom = "portrait-background";
+
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+let listaFotos = [];
+let contFotos = 0;
+let contFav = 0;
+
 document.querySelector("#buttonFavorites").addEventListener("click", () => imgFavorita());
+document.querySelector("#buttonImgs").addEventListener("click", () => imgRandom());
 
-imgHeart.addEventListener("click", () => {
-    let listaLinks = [linkImg.style.background, linkDireto.href];
-    const existente = confirmarSeEstaSalvo(listaLinks);
+document.querySelector("#imgPrev").addEventListener("click", () => imgPrev());
+document.querySelector("#imgNext").addEventListener("click", () => imgNext());
 
-    if (!existente && linkDireto != '') {
-        imgHeart.src = "./img/heart_red.svg";
-        favorites.push(listaLinks);
-    } else {
-        imgHeart.src = "./img/heart.svg";
-        favorites.pop();
-    }
-    localStorage.favorites = JSON.stringify(favorites);
-});
+imgHeart.addEventListener("click", () => heartEvent());
 
-function imgRandom() {
-    let classe = containePai.classList;
-    if (classe.contains("fundoRetratoInvertido")) {
-        classe.remove("fundoRetratoInvertido");
-        classe.add("fundoRetrato");
-    }
+const imgRandom = () => {
+    mudarTipoRetrato(classeRetratoFavorites, classeRetratoRandom);
     atualizaImg();
 }
 
-function atualizaImg() {
-    let apiKey = "kaokzJCbcYsVY9jm5V2tjN4nJ39YEP4rCmn8uZiWqxQ";
-    imgHeart.src = "./img/heart.svg";
-
-    fetch("https://api.unsplash.com/photos/random/?client_id=" + apiKey)
-    .then((response) => response.json())
-    .then((dados) => {
-        let link = "url(" + dados.urls.raw + "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress) center no-repeat";
-        mudarBackground(link, dados.links.html);
-    })
-    .catch((error) => alert("Bateu o limite de imagens por minutos: "));
+const imgPrev = () => {
+    if (containePai.classList.contains(classeRetratoRandom)) {
+        contFotos = removeOuResetDoContador(contFotos, listaFotos);
+        destinarImprimirFoto(contFotos, listaFotos);
+    } else {
+        contFav = removeOuResetDoContador(contfav, favorites);
+        destinarImprimirFoto(contFav, favorites);
+    }
 }
 
-function imgFavorita() {
-    let classe = containePai.classList;
-    
-    if (classe.contains("fundoRetrato")) {
-        classe.remove("fundoRetrato");
-        classe.add("fundoRetratoInvertido");
+const imgNext = () => {
+    if (containePai.classList.contains(classeRetratoRandom)) {
+        contFotos = addOuResetDoContador(contFotos, listaFotos);
+        destinarImprimirFoto(contFotos, listaFotos);
+    } else {
+        contFav = removeOuResetDoContador(contFav, favorites);
+        destinarImprimirFoto(contFav, favorites);
+    }
+}
+
+const heartEvent = () => {
+    const objetoLinks = objetoSalvar(linkImg.style.background, linkDireto.href);
+    const existente = favorites.some(element => element.link_html == objetoLinks.link_html);
+
+    if (existente && linkDireto != '') {
+        imgHeart.src = "./img/heart.svg";
+        favorites.pop();
+    } else {
+        imgHeart.src = "./img/heart_red.svg";
+        favorites.push(objetoLinks);
     }
 
+    localStorage.favorites = JSON.stringify(favorites);
+}
+
+const atualizaImg = () => {
+    let apiKey = "kaokzJCbcYsVY9jm5V2tjN4nJ39YEP4rCmn8uZiWqxQ";
+    imgHeart.src = "./img/heart.svg";
+    containePai.classList.toggle("loading");
+
+    fetch("https://api.unsplash.com/photos/random/?client_id=" + apiKey)
+        .then((response) => response.json())
+        .then((dados) => {
+            let link = "url(" + dados.urls.raw + "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress) center no-repeat";
+            mudarBackground(link, dados.links.html);
+            listaFotos.push(objetoSalvar(link, dados.links.html));
+        })
+        .catch(() => alert("Bateu o limite de imagens por hora"));
+}
+
+const imgFavorita = () => {
+    mudarTipoRetrato(classeRetratoRandom, classeRetratoFavorites);
+
     if (localStorage.length > 0 && favorites.length > 0) {
-        mudarBackground(favorites[cont][0], favorites[cont][1]);
+        mudarBackground(favorites[contFav].link_img, favorites[contFav].link_html);
+        imgHeart.src = "./img/heart_red.svg";
     } else {
         mudarBackground("#50858B", "");
         imgHeart.src = "./img/heart.svg";
     }
 
-    cont++;
-    if (cont == favorites.length) {
-        cont = 0;
+    contFav = addOuResetDoContador(contFav, favorites);
+}
+
+const addOuResetDoContador = (contador, array) => {
+    contador++;
+
+    if (contador == array.length) {
+        contador = 0;
+    }
+
+    return contador;
+}
+
+const removeOuResetDoContador = (contador, array) => {
+    contador--;
+
+    if (contador < 0) {
+        contador = array.length - 1;
+    }
+
+    return contador;
+}
+
+const destinarImprimirFoto = (contador, array) => {
+    if (array.length > 0 && array.length > contador) {
+        const objeto = array[contador];
+        mudarBackground(objeto.link_img, objeto.link_html);
     }
 }
 
-function mudarBackground(planoDeFundo, linkUnsplash) {
+const mudarTipoRetrato = (classeAtual, classeNova) => {
+    let classe = containePai.classList;
+
+    if (classe.contains(classeAtual)) {
+        classe.remove(classeAtual);
+        classe.add(classeNova);
+    }
+}
+
+const mudarBackground = (planoDeFundo, linkUnsplash) => {
     linkImg.style.background = planoDeFundo;
     linkDireto.href = linkUnsplash;
 }
 
-function confirmarSeEstaSalvo(array) {
-    for (let cont = 0; cont < favorites.length; cont++) {
-        if (favorites[cont][1] == array[1]) {
-            return true;
-        }
-    }
-    return false;
+const objetoSalvar = (link_img, link_html) => {
+    return {link_img, link_html}
 }

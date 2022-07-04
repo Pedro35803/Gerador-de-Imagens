@@ -1,6 +1,8 @@
+const routes = require('./src/routers');
 const express = require('express');
 const cors = require('cors');
-const port = 3000;
+require('dotenv').config();
+
 const app = express();
 
 const grupo = {
@@ -9,10 +11,9 @@ const grupo = {
 }
 
 app.use(cors());
-app.get('/', (req, res) => {
-	res.send(grupo);
-});
+app.use(express.json());
+app.use(routes);
 
-app.listen(port, () => {
-  console.log(`Executando em http://localhost:${port}`)
-})
+app.listen(process.env.PORT || 3580, () => {
+  console.log("Executando a API");
+});
