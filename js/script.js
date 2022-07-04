@@ -3,6 +3,9 @@ let linkDireto = document.querySelector("#directLink");
 let linkImg = document.querySelector("#linkImg");
 let imgHeart = document.querySelector("#heart");
 
+const classeRetratoFavorites = "portrait-background-inverted";
+const classeRetratoRandom = "portrait-background";
+
 let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 let listaFotos = [];
 let contFotos = 0;
@@ -17,39 +20,27 @@ document.querySelector("#imgNext").addEventListener("click", () => imgNext());
 imgHeart.addEventListener("click", () => heartEvent());
 
 const imgRandom = () => {
-    let classe = containePai.classList;
-
-    if (classe.contains("portrait-background-inverted")) {
-        classe.remove("portrait-background-inverted");
-        classe.add("portrait-background");
-    }
-
+    mudarTipoRetrato(classeRetratoFavorites, classeRetratoRandom);
     atualizaImg();
 }
 
 const imgPrev = () => {
-    contFotos--;
-
-    if (contFotos < 0) {
-        contFotos = listaFotos.length - 1;
-    }
-
-    if (listaFotos.length > 0) {
-        const fotoAtual = listaFotos[contFotos];
-        mudarBackground(fotoAtual.link_img, fotoAtual.link_html);
+    if (containePai.classList.contains(classeRetratoRandom)) {
+        contFotos = removeOuResetDoContador(contFotos, listaFotos);
+        destinarImprimirFoto(contFotos, listaFotos);
+    } else {
+        contFav = removeOuResetDoContador(contfav, favorites);
+        destinarImprimirFoto(contFav, favorites);
     }
 }
 
 const imgNext = () => {
-    contFotos++;
-
-    if (contFotos == listaFotos.length) {
-        contFotos = 0;
-    }
-
-    if (listaFotos.length > 0 && listaFotos.length > contFotos) {
-        const fotoAtual = listaFotos[contFotos];
-        mudarBackground(fotoAtual.link_img, fotoAtual.link_html);
+    if (containePai.classList.contains(classeRetratoRandom)) {
+        contFotos = addOuResetDoContador(contFotos, listaFotos);
+        destinarImprimirFoto(contFotos, listaFotos);
+    } else {
+        contFav = removeOuResetDoContador(contFav, favorites);
+        destinarImprimirFoto(contFav, favorites);
     }
 }
 
@@ -84,12 +75,7 @@ const atualizaImg = () => {
 }
 
 const imgFavorita = () => {
-    let classe = containePai.classList;
-
-    if (classe.contains("portrait-background")) {
-        classe.remove("portrait-background");
-        classe.add("portrait-background-inverted");
-    }
+    mudarTipoRetrato(classeRetratoRandom, classeRetratoFavorites);
 
     if (localStorage.length > 0 && favorites.length > 0) {
         mudarBackground(favorites[contFav].link_img, favorites[contFav].link_html);
@@ -99,9 +85,42 @@ const imgFavorita = () => {
         imgHeart.src = "./img/heart.svg";
     }
 
-    contFav++;
-    if (contFav == favorites.length) {
-        contFav = 0;
+    contFav = addOuResetDoContador(contFav, favorites);
+}
+
+const addOuResetDoContador = (contador, array) => {
+    contador++;
+
+    if (contador == array.length) {
+        contador = 0;
+    }
+
+    return contador;
+}
+
+const removeOuResetDoContador = (contador, array) => {
+    contador--;
+
+    if (contador < 0) {
+        contador = array.length - 1;
+    }
+
+    return contador;
+}
+
+const destinarImprimirFoto = (contador, array) => {
+    if (array.length > 0 && array.length > contador) {
+        const objeto = array[contador];
+        mudarBackground(objeto.link_img, objeto.link_html);
+    }
+}
+
+const mudarTipoRetrato = (classeAtual, classeNova) => {
+    let classe = containePai.classList;
+
+    if (classe.contains(classeAtual)) {
+        classe.remove(classeAtual);
+        classe.add(classeNova);
     }
 }
 
