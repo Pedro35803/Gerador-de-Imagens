@@ -59,26 +59,27 @@ const heartEvent = () => {
     localStorage.favorites = JSON.stringify(favorites);
 }
 
-const atualizaImg = () => {
+const atualizaImg = async () => {
     imgHeart.src = "./img/heart.svg";
     containePai.classList.toggle("loading");
 
-    const dados = receberImagemDaApi();
-    const configImg = "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress";
+    const dados = await receberImagemDaApi();
+    const { link_img, link_html } = dados;
 
-    const link = "url(" + dados.urls.raw + configImg + ") center no-repeat";
-    mudarBackground(link, dados.links.html);
-    
-    listaFotos.push(objetoSalvar(link, dados.links.html));
+    const configImg = "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress";
+    const bgLink = "url(" + link_img + configImg + ") center no-repeat";
+
+    mudarBackground(bgLink, link_html);
+
+    listaFotos.push(objetoSalvar(bgLink, link_html));
 }
 
-const receberImagemDaApi = () => {
-    const linkApi = "https://api.unsplash.com/photos/random/?client_id=";
-    const chaveAPI = "kaokzJCbcYsVY9jm5V2tjN4nJ39YEP4rCmn8uZiWqxQ";
+const receberImagemDaApi = async () => {
+    const linkApi = "http://localhost:3580";
 
-    return fetch(linkApi + chaveAPI)
+    return await fetch(linkApi)
         .then((response) => response.json())
-        .catch(() => alert("Bateu o limite de imagens por hora"));
+        .catch((error) => alert(error));
 }
 
 const imgFavorita = () => {
