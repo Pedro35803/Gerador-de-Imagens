@@ -29,7 +29,7 @@ const imgPrev = () => {
         contFotos = removeOuResetDoContador(contFotos, listaFotos);
         destinarImprimirFoto(contFotos, listaFotos);
     } else {
-        contFav = removeOuResetDoContador(contfav, favorites);
+        contFav = removeOuResetDoContador(contFav, favorites);
         destinarImprimirFoto(contFav, favorites);
     }
 }

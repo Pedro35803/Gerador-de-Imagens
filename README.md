@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://github.com/Pedro35803/Buscador-de-Imagens">
-    <img src="https://img.shields.io/badge/version-1.5.0-50858B.svg?cacheSeconds=2592000" alt="Version 2.0.0"/>
+    <img src="https://img.shields.io/badge/version-2.0.0-50858B.svg?cacheSeconds=2592000" alt="Version 2.0.0"/>
     <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&color=CDC6AE&labelColor=39304A" alt="PRs welcome!"/>
   </a>
   
@@ -16,7 +16,7 @@
 * [Sobre](#Sobre)
 * [Como usar](#comoUsar)
 * [Linguagens](#linguagens)
-* [Frameworks](#frameworks)
+* [Node.js](#node)
 * [Licença](#Licença)
 
 ---
@@ -40,11 +40,12 @@ Para isso siga os seguintes **pré requisitos:**
   git clone https://github.com/Pedro35803/Buscador-de-Imagens.git
 ```
 
-2. Inicializa o app.js:
+3. Instalar dependencias e Inicializa o app.js:
+Já está consumindo a API pelo Heroku, mas se deseja ainda rodar a API localmente é só digitar:
 
 ```sh
-  cd Buscador-de-Imagens
-  node js/app.js
+  npm install
+  npm start
 ```
 
 ---
@@ -57,11 +58,15 @@ Esta atividade foi realizada apenas com as **linguagens básicas** do desenvolvi
 * [JavaScript](https://www.javascript.com/)
 
 ---
-<a id="Licença"></a>
-# frameworks
-Como uma das demandas da avaliação era usar o **express**, utilizei o mesmo como sujerido.
+<a id="node"></a>
+# Node.js
+Como uma das demandas da avaliação era usar o Node, utilizei os seguintes ferramentas para realizar a atividade
 
 * [Express](https://expressjs.com/pt-br/)
+* [Cors](https://www.npmjs.com/package/cors)
+* [Axios](https://axios-http.com/ptbr/docs/intro)
+* [Nodemon](https://www.npmjs.com/package/nodemon)
+* [DotEnv](https://www.npmjs.com/package/dotenv)
 
 ---
 <a id="Licença"></a>
