@@ -75,7 +75,7 @@ const atualizaImg = async () => {
 }
 
 const receberImagemDaApi = async () => {
-    const linkApi = "http://localhost:3580";
+    const linkApi = "https://buscador-de-imagem.herokuapp.com/";
 
     return await fetch(linkApi)
         .then((response) => response.json())
