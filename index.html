@@ -8,23 +8,23 @@
     <title>Home</title>
 </head>
 <body>
-    <main class="container">
+    <main class="container container-main">
         <h1 class="title">Buscador de Imagens</h1>
 
-        <main class="flex">
-            <button class="button button-blue" id="buttonImgs">Random</button>
-            <button class="button button-pupple" id="buttonFavorites">Favoritos</button>
+        <main class="container">
+            <button class="button button-blue" id="button_random">Random</button>
+            <button class="button button-pupple" id="button_favorites">Favoritos</button>
         </main>
 
-        <main class="container--centralized">
-            <button class="button button-circle button-blue" id="imgPrev">
+        <main class="container container--centralized">
+            <button class="button button-circle button-blue" id="img_prev">
                 <div class="seta seta-esquerda"></div>
             </button>
             
-            <main class="container-main portrait-background" id="containerPaiImg">
-                <main class="link-img" id="linkImg">
-                    <section class="container-portrait">
-                        <a id="directLink" target="_blank">
+            <main class="portrait portrait-background" id="container_pai_img">
+                <main class="portrait-img" id="link_img">
+                    <section class="portrait-links">
+                        <a id="direct_link" target="_blank">
                             <img src="img/direct.svg" alt="Visitar imagem no unsplash">
                         </a>
                         <img id="heart" src="img/heart.svg" alt="Favoritar">
@@ -32,7 +32,7 @@
                 </main>
             </main>
             
-            <button class="button button-circle button-pupple" id="imgNext">
+            <button class="button button-circle button-pupple" id="img_next">
                 <div class="seta seta-direita"></div>
             </button>
         </main>

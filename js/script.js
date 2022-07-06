@@ -1,6 +1,6 @@
-let containePai = document.querySelector("#containerPaiImg");
-let linkDireto = document.querySelector("#directLink");
-let linkImg = document.querySelector("#linkImg");
+let containePai = document.querySelector("#container_pai_img");
+let linkDireto = document.querySelector("#direct_link");
+let linkImg = document.querySelector("#link_img");
 let imgHeart = document.querySelector("#heart");
 
 const classeRetratoFavorites = "portrait-background-inverted";
@@ -17,11 +17,11 @@ let objetoFoto = {
     favorites: false
 };
 
-document.querySelector("#buttonFavorites").addEventListener("click", () => imgFavorita());
-document.querySelector("#buttonImgs").addEventListener("click", () => imgRandom());
+document.querySelector("#button_favorites").addEventListener("click", () => imgFavorita());
+document.querySelector("#button_random").addEventListener("click", () => imgRandom());
 
-document.querySelector("#imgPrev").addEventListener("click", () => imgPrev());
-document.querySelector("#imgNext").addEventListener("click", () => imgNext());
+document.querySelector("#img_prev").addEventListener("click", () => imgPrev());
+document.querySelector("#img_next").addEventListener("click", () => imgNext());
 
 imgHeart.addEventListener("click", () => heartEvent());
 
