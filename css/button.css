@@ -15,28 +15,6 @@
     margin: 20px 20px 0px 20px;
 }
 
-.button-remote {
-    text-decoration: none;
-    position: absolute;
-
-    right: 25px;
-    bottom: 25px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.button-green {
-    background:linear-gradient(#89c403, rgba(49, 69, 1, 1));
-    box-shadow:inset 0px 1px 0px 0px rgba(55, 69, 22, 1); 
-    border-color:#679103;
-}
-
-.button-green:hover {
-    background: linear-gradient(rgba(49, 69, 1, 1), #89c403);
-}
-
 .button-blue {
     background: linear-gradient(#4a90e2, #2d324f);
     box-shadow: inset 1px 1px 13px 0px #2d324f;
