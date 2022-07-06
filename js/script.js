@@ -12,7 +12,7 @@ let contFotos = 0;
 let contFav = 0;
 
 let objetoFoto = {
-    link_img: "", 
+    link_img: "",
     link_html: "",
     favorites: false
 };
@@ -50,7 +50,6 @@ const imgPrev = () => {
     if (containePai.classList.contains(classeRetratoRandom)) {
         contFotos = removeOuResetDoContador(contFotos, listaFotos);
         destinarImprimirFoto(contFotos, listaFotos);
-        // mudarSvgDependendoDaFoto(contFotos, listaFotos);
     } else {
         contFav = removeOuResetDoContador(contFav, favorites);
         destinarImprimirFoto(contFav, favorites);
@@ -61,7 +60,6 @@ const imgNext = () => {
     if (containePai.classList.contains(classeRetratoRandom)) {
         contFotos = addOuResetDoContador(contFotos, listaFotos);
         destinarImprimirFoto(contFotos, listaFotos);
-        // mudarSvgDependendoDaFoto(contFotos, listaFotos);
     } else {
         contFav = addOuResetDoContador(contFav, favorites);
         destinarImprimirFoto(contFav, favorites);
@@ -94,13 +92,14 @@ const imgFavorita = () => {
     mudarTipoRetrato(classeRetratoRandom, classeRetratoFavorites);
 
     if (localStorage.length > 0 && favorites.length > 0) {
-        mudarBackground(favorites[contFav].link_img, favorites[contFav].link_html);
+        objetoFoto = favorites[contFav];
         heartChecked();
     } else {
-        mudarBackground("#50858B", "");
+        objetoFoto = objetoSalvar("#50858B", "", false)
         heartUnchecked();
     }
 
+    mudarBackground(objetoFoto.link_img, objetoFoto.link_html);
     contFav = addOuResetDoContador(contFav, favorites);
 }
 
@@ -126,14 +125,19 @@ const removeOuResetDoContador = (contador, array) => {
 
 const destinarImprimirFoto = (contador, array) => {
     if (array.length > 0 && array.length > contador) {
-        const objeto = array[contador];
-        mudarBackground(objeto.link_img, objeto.link_html);
+        objetoFoto = array[contador];
+        mudarBackground(objetoFoto.link_img, objetoFoto.link_html);
+        mudarSvgDependendoDaFoto(objetoFoto);
     }
 }
 
-// const mudarSvgDependendoDaFoto = (contador, array) => {
-
-// }
+const mudarSvgDependendoDaFoto = (objeto) => {
+    if (objeto.favorites) {
+        heartChecked();
+    } else {
+        heartUnchecked();
+    }
+}
 
 const mudarTipoRetrato = (classeAtual, classeNova) => {
     let classe = containePai.classList;
