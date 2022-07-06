@@ -11,6 +11,12 @@ let listaFotos = [];
 let contFotos = 0;
 let contFav = 0;
 
+let objetoFoto = {
+    link_img: "", 
+    link_html: "",
+    favorites: false
+};
+
 document.querySelector("#buttonFavorites").addEventListener("click", () => imgFavorita());
 document.querySelector("#buttonImgs").addEventListener("click", () => imgRandom());
 
@@ -24,10 +30,27 @@ const imgRandom = () => {
     atualizaImg();
 }
 
+const atualizaImg = async () => {
+    containePai.classList.toggle("loading");
+    heartUnchecked();
+
+    const dados = await receberImagemDaApi();
+    const { link_img, link_html } = dados;
+
+    const configImg = "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress";
+    const bgLink = "url(" + link_img + configImg + ") center no-repeat";
+
+    mudarBackground(bgLink, link_html);
+
+    objetoFoto = objetoSalvar(bgLink, link_html, false);
+    listaFotos.push(objetoFoto);
+}
+
 const imgPrev = () => {
     if (containePai.classList.contains(classeRetratoRandom)) {
         contFotos = removeOuResetDoContador(contFotos, listaFotos);
         destinarImprimirFoto(contFotos, listaFotos);
+        // mudarSvgDependendoDaFoto(contFotos, listaFotos);
     } else {
         contFav = removeOuResetDoContador(contFav, favorites);
         destinarImprimirFoto(contFav, favorites);
@@ -38,40 +61,25 @@ const imgNext = () => {
     if (containePai.classList.contains(classeRetratoRandom)) {
         contFotos = addOuResetDoContador(contFotos, listaFotos);
         destinarImprimirFoto(contFotos, listaFotos);
+        // mudarSvgDependendoDaFoto(contFotos, listaFotos);
     } else {
-        contFav = removeOuResetDoContador(contFav, favorites);
+        contFav = addOuResetDoContador(contFav, favorites);
         destinarImprimirFoto(contFav, favorites);
     }
 }
 
 const heartEvent = () => {
-    const objetoLinks = objetoSalvar(linkImg.style.background, linkDireto.href);
-    const existente = favorites.some(element => element.link_html == objetoLinks.link_html);
-
-    if (existente && linkDireto != '') {
-        imgHeart.src = "./img/heart.svg";
-        favorites.pop();
+    if (!objetoFoto.favorites && objetoFoto.link_html != "") {
+        objetoFoto.favorites = true;
+        favorites.push(objetoFoto);
+        heartChecked();
     } else {
-        imgHeart.src = "./img/heart_red.svg";
-        favorites.push(objetoLinks);
+        favorites.pop();
+        heartUnchecked();
+        objetoFoto.favorites = false;
     }
 
     localStorage.favorites = JSON.stringify(favorites);
-}
-
-const atualizaImg = async () => {
-    imgHeart.src = "./img/heart.svg";
-    containePai.classList.toggle("loading");
-
-    const dados = await receberImagemDaApi();
-    const { link_img, link_html } = dados;
-
-    const configImg = "&h=450&w=375&fit=crop=faces,center&fit=fill&fill=blur&auto=compress";
-    const bgLink = "url(" + link_img + configImg + ") center no-repeat";
-
-    mudarBackground(bgLink, link_html);
-
-    listaFotos.push(objetoSalvar(bgLink, link_html));
 }
 
 const receberImagemDaApi = async () => {
@@ -87,10 +95,10 @@ const imgFavorita = () => {
 
     if (localStorage.length > 0 && favorites.length > 0) {
         mudarBackground(favorites[contFav].link_img, favorites[contFav].link_html);
-        imgHeart.src = "./img/heart_red.svg";
+        heartChecked();
     } else {
         mudarBackground("#50858B", "");
-        imgHeart.src = "./img/heart.svg";
+        heartUnchecked();
     }
 
     contFav = addOuResetDoContador(contFav, favorites);
@@ -123,6 +131,10 @@ const destinarImprimirFoto = (contador, array) => {
     }
 }
 
+// const mudarSvgDependendoDaFoto = (contador, array) => {
+
+// }
+
 const mudarTipoRetrato = (classeAtual, classeNova) => {
     let classe = containePai.classList;
 
@@ -137,6 +149,14 @@ const mudarBackground = (planoDeFundo, linkUnsplash) => {
     linkDireto.href = linkUnsplash;
 }
 
-const objetoSalvar = (link_img, link_html) => {
-    return {link_img, link_html}
+const heartUnchecked = () => {
+    imgHeart.src = "./img/heart.svg";
+}
+
+const heartChecked = () => {
+    imgHeart.src = "./img/heart_red.svg";
+}
+
+const objetoSalvar = (link_img, link_html, favorites) => {
+    return {link_img, link_html, favorites}
 }
