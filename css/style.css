@@ -57,12 +57,6 @@ body::-webkit-scrollbar {
     transform: rotate(3deg);
 }
 
-.loading {
-    background-image: url('../img/loading_02.gif');
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
 .portrait-img {
     height: 100%;
     width: 100%;
@@ -82,4 +76,10 @@ body::-webkit-scrollbar {
     height: 25px;
     width: 25px;
     margin-right: 10px;
+}
+
+.loading {
+    background-image: url('../img/loading.gif');
+    background-position: center;
+    background-repeat: no-repeat;
 }
