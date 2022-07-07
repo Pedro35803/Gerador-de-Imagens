@@ -72,9 +72,17 @@ const heartEvent = () => {
         favorites.push(objetoFoto);
         heartChecked();
     } else {
-        favorites.pop();
+        try {
+            const indexFotos = listaFotos.findIndex(obj => obj.link_html == objetoFoto.link_html);
+            const indexFav = favorites.findIndex(obj => obj.link_html == objetoFoto.link_html);
+    
+            favorites.splice(indexFav, 1);
+            listaFotos[indexFotos].favorites = false;
+        } catch {
+            null;
+        }
+
         heartUnchecked();
-        objetoFoto.favorites = false;
     }
 
     localStorage.favorites = JSON.stringify(favorites);
@@ -106,7 +114,7 @@ const imgFavorita = () => {
 const addOuResetDoContador = (contador, array) => {
     contador++;
 
-    if (contador == array.length) {
+    if (array.length <= contador) {
         contador = 0;
     }
 
