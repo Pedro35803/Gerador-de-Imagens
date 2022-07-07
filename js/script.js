@@ -31,7 +31,7 @@ const imgRandom = () => {
 }
 
 const atualizaImg = async () => {
-    containePai.classList.toggle("loading");
+    adicionaLoading();
     heartUnchecked();
 
     const dados = await receberImagemDaApi();
@@ -171,4 +171,14 @@ const heartChecked = () => {
 
 const objetoSalvar = (link_img, link_html, favorites) => {
     return {link_img, link_html, favorites}
+}
+
+const adicionaLoading = () => {
+    let classe = containePai.classList;
+
+    if (classe.contains("loading")) {
+        classe.remove("loading");
+    }
+
+    classe.toggle("loading");
 }
