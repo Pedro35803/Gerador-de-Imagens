@@ -44,6 +44,7 @@ const atualizaImg = async () => {
 
     objetoFoto = objetoSalvar(bgLink, link_html, false);
     listaFotos.push(objetoFoto);
+    contFotos = listaFotos.length - 1;
 }
 
 const imgPrev = () => {
