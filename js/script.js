@@ -90,7 +90,8 @@ const heartEvent = () => {
 }
 
 const receberImagemDaApi = async () => {
-    const linkApi = "https://buscador-de-imagem.herokuapp.com/";
+    const linkApi = "https://buscador-de-imagem.herokuapp.com/api";
+    // const linkApi = "http://localhost:3580/api";
 
     return await fetch(linkApi)
         .then((response) => response.json())

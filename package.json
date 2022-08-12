@@ -2,15 +2,14 @@
   "name": "gerador-de-imagens",
   "version": "2.0.0",
   "description": "",
-  "main": "backend/index.js",
+  "main": "api/index.js",
   "engines": {
     "node": "16.x",
     "npm": "8.x"
   },
   "scripts": {
-    "start": "node backend/index.js",
-    "dev": "nodemon backend/index.js",
-    "build": "node build --output ."
+    "start": "node api/index.js",
+    "dev": "nodemon api/index.js"
   },
   "repository": {
     "type": "git",

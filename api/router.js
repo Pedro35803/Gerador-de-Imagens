@@ -2,7 +2,7 @@ const express = require("express");
 const routers = express.Router();
 const axios = require('axios');
 
-routers.get("/", async (req, res) => {
+routers.get("/api", async (req, res) => {
     const chaveAPI = process.env.API_KEY;
 
     const { data } = await axios("https://api.unsplash.com/photos/random/?client_id=" + chaveAPI);
