@@ -90,7 +90,7 @@ const heartEvent = () => {
 }
 
 const receberImagemDaApi = async () => {
-    const linkApi = "http://localhost:3580/api";
+    const linkApi = "https://buscador-de-imagens.vercel.app/api";
 
     return await fetch(linkApi)
         .then((response) => response.json())
