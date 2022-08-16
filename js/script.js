@@ -25,6 +25,12 @@ document.querySelector("#img_next").addEventListener("click", () => imgNext());
 
 imgHeart.addEventListener("click", () => heartEvent());
 
+document.addEventListener("keyup", (event) => {
+    if (event.key == " ") {
+        imgRandom();
+    }
+})
+
 const imgRandom = () => {
     mudarTipoRetrato(classeRetratoFavorites, classeRetratoRandom);
     atualizaImg();
@@ -94,7 +100,7 @@ const receberImagemDaApi = async () => {
 
     return await fetch(linkApi)
         .then((response) => response.json())
-        .catch((error) => alert(error));
+        .catch(() => alert("Bateu a quantidade de pedidos de imagem por hora, tente novamente mais tarde"));
 }
 
 const imgFavorita = () => {
